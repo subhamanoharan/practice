@@ -1,7 +1,3 @@
-'use client'
-
-import {useState} from 'react'
-
 import Square from '@/components/Square'
 
 export default function Board({squares, xIsNext, onPlay}) {
@@ -19,56 +15,15 @@ export default function Board({squares, xIsNext, onPlay}) {
   return (
     <>
       <div className="status">{status}</div>
-      <div className="board-row">
-        <Square
-          value={squares[0]}
-          onSquareClick={i => handleClick(0)}
-          isWinningSquare={winningLines.includes(0)}
-        />
-        <Square
-          value={squares[1]}
-          onSquareClick={i => handleClick(1)}
-          isWinningSquare={winningLines.includes(1)}
-        />
-        <Square
-          value={squares[2]}
-          onSquareClick={i => handleClick(2)}
-          isWinningSquare={winningLines.includes(2)}
-        />
-      </div>
-      <div className="board-row">
-        <Square
-          value={squares[3]}
-          onSquareClick={i => handleClick(3)}
-          isWinningSquare={winningLines.includes(3)}
-        />
-        <Square
-          value={squares[4]}
-          onSquareClick={i => handleClick(4)}
-          isWinningSquare={winningLines.includes(4)}
-        />
-        <Square
-          value={squares[5]}
-          onSquareClick={i => handleClick(5)}
-          isWinningSquare={winningLines.includes(5)}
-        />
-      </div>
-      <div className="board-row">
-        <Square
-          value={squares[6]}
-          onSquareClick={i => handleClick(6)}
-          isWinningSquare={winningLines.includes(6)}
-        />
-        <Square
-          value={squares[7]}
-          onSquareClick={i => handleClick(7)}
-          isWinningSquare={winningLines.includes(7)}
-        />
-        <Square
-          value={squares[8]}
-          onSquareClick={i => handleClick(8)}
-          isWinningSquare={winningLines.includes(8)}
-        />
+      <div className="w-36 grid grid-cols-3">
+          {squares.map((s, i) => (
+            <Square
+              key={i}
+              value={s}
+              onSquareClick={() => handleClick(i)}
+              isWinningSquare={winningLines.includes(i)}
+            />
+          ))}
       </div>
     </>
   )
