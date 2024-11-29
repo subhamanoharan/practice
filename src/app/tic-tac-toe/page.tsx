@@ -10,14 +10,14 @@ export default function TicTacToe() {
   const currentSquares = history[history.length - 1];
   const xIsNext = noOfMoves % 2 != 0
 
-  function handlePlay(index) {
+  function handlePlay(index: number) {
     setHistory([
       ...history,
       currentSquares.map((s, i) => i === index ? xIsNext? 'X' : 'O' : s)
     ])
   }
 
-  function handleJumpToMove(index) {
+  function handleJumpToMove(index: number) {
     setHistory(history.filter((s, i) => i <= index))
   }
 

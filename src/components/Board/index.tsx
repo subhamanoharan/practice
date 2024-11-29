@@ -1,6 +1,12 @@
 import Square from '@/components/Square'
 
-export default function Board({squares, xIsNext, onPlay}) {
+interface BoardProps {
+  squares: string[];
+  xIsNext: boolean;
+  onPlay: (index: number) => void;
+}
+
+export default function Board({squares, xIsNext, onPlay} : BoardProps) {
   function handleClick(index: number) {
     if(squares[index] || calculateWinner(squares)) return;
     onPlay(index)
